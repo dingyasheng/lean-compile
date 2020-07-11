@@ -85,9 +85,9 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        cd openwrt
         cp ../actiongen8.sh actiongen8.sh
         chmod +x actiongen8.sh
-        cd openwrt
         sh -x actiongen8.sh
         make defconfig
 
