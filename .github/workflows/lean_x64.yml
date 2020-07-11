@@ -81,7 +81,6 @@ jobs:
           cat >> .config <<EOF
           EOF
           cat >> .config <<EOF
-          #CONFIG_EFI_IMAGES=y
           EOF
           cat >> .config <<EOF
           EOF
