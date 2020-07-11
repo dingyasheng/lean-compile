@@ -23,6 +23,19 @@ on:
   #watch:
   #  types: [started]
 
+env:
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: .config
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
+  SSH_ACTIONS: false
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: true
+  UPLOAD_COWTRANSFER: false
+  UPLOAD_WETRANSFER: false
+  TZ: Asia/Shanghai
 
 jobs:
 
@@ -53,9 +66,19 @@ jobs:
              
       - name: Clone source code
         run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+      
+
+      - name: Clone source code
+        working-directory: /workdir
+        run: |
+          df -hT $PWD
+          git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+          ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
 
       - name: Update feeds
         run: |
+          cd openwrt
           sed -i 's/\"#src-git\"/\"src-git\"/g' ./feeds.conf.default
           sed -i 's/192.168.1.1/192.168.8.222/g' package/base-files/files/bin/config_generate
           sed -i 's/OpenWrt/HP GEN8/g' package/base-files/files/bin/config_generate
@@ -67,7 +90,7 @@ jobs:
         run: make defconfig
                     
       - name: Install Luci for Clash
-#        working-directory: ./openwrt
+        working-directory: ./openwrt
         run: |
           cd package
           git clone https://github.com/frainzy1477/luci-app-clash
