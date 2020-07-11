@@ -85,9 +85,10 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $GEN8_SH
+        cp ../actiongen8.sh actiongen8.sh
+        chmod +x actiongen8.sh
         cd openwrt
-        $GITHUB_WORKSPACE/$GEN8_SH
+        sh -x actiongen8.sh
         make defconfig
 
     - name: Download package
