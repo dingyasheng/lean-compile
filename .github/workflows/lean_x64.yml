@@ -93,12 +93,6 @@ jobs:
           CONFIG_TARGET_x86_64_Generic=y
           EOF
           cat >> .config <<EOF
-          EOF
-          cat >> .config <<EOF
-          EOF
-          cat >> .config <<EOF
-          EOF
-          cat >> .config <<EOF
           CONFIG_NFS_KERNEL_SERVER_V4=y
           CONFIG_PACKAGE_kmod-crypto-cts=y
           CONFIG_PACKAGE_kmod-dax=y
@@ -210,7 +204,6 @@ jobs:
           CONFIG_PACKAGE_e2fsprogs=y
           CONFIG_PACKAGE_shadowsocksr-libev-server=y
           EOF
-          sed -i 's/^[ \t]*//g' ./.config
           make defconfig
 
       - name: Make download
