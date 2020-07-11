@@ -67,20 +67,11 @@ jobs:
       - name: Clone source code
         run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
       
-
-      - name: Clone source code
-        working-directory: /workdir
-        run: |
-          df -hT $PWD
-          git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-          ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-
-
       - name: Update feeds
         run: |
           cd openwrt
           sed -i 's/\"#src-git\"/\"src-git\"/g' ./feeds.conf.default
-          sed -i 's/192.168.1.1/192.168.8.222/g' package/base-files/files/bin/config_generate
+          sed -i 's/192.168.1.1/192.168.2.55/g' package/base-files/files/bin/config_generate
           sed -i 's/OpenWrt/HP GEN8/g' package/base-files/files/bin/config_generate
           sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
           ./scripts/feeds update -a
