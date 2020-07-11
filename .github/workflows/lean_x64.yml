@@ -71,7 +71,6 @@ jobs:
          
       - name: Generate configuration file
         run: make defconfig
-        run: |
           rm -f ./.config*
           touch ./.config
           # 编译x64固件:
