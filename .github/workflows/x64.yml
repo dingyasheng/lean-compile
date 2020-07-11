@@ -71,7 +71,7 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-- name: Generate configuration file
+    - name: Generate configuration file
         working-directory: ./openwrt
         run: make defconfig
           rm -f ./.config*
@@ -199,7 +199,6 @@ jobs:
           CONFIG_PACKAGE_e2fsprogs=y
           CONFIG_PACKAGE_shadowsocksr-libev-server=y
           EOF
-          sed -i 's/^[ \t]*//g' ./.config
           make defconfig
 
     - name: Download package
