@@ -196,7 +196,6 @@ jobs:
           CONFIG_PACKAGE_e2fsprogs=y
           CONFIG_PACKAGE_shadowsocksr-libev-server=y
           EOF
-          # 
           sed -i 's/^[ \t]*//g' ./.config
           make defconfig
 
