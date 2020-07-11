@@ -74,10 +74,10 @@ jobs:
         sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        
-   - name: Generate configuration file
-     working-directory: ./openwrt
-     run:
+            
+    - name: Generate configuration file
+      working-directory: ./openwrt
+      run:
         rm -f ./.config*
         touch ./.config
         cat >> .config <<EOF
