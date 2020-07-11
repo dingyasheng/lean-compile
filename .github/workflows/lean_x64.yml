@@ -80,11 +80,9 @@ jobs:
           EOF
           cat >> .config <<EOF
           EOF
-#          # 编译UEFI固件:
           cat >> .config <<EOF
           #CONFIG_EFI_IMAGES=y
           EOF
-#          # IPv6支持:
           cat >> .config <<EOF
           EOF
           cat >> .config <<EOF
