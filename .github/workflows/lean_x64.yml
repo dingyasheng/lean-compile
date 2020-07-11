@@ -13,9 +13,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 01 * * *
@@ -64,7 +64,7 @@ jobs:
         run: make defconfig
                     
       - name: Install Luci for Clash
-        working-directory: ./openwrt
+#        working-directory: ./openwrt
         run: |
           cd package
           git clone https://github.com/frainzy1477/luci-app-clash
