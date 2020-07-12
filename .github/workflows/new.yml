@@ -73,6 +73,7 @@ jobs:
         sed -i 's/192.168.1.1/192.168.2.55/g' package/base-files/files/bin/config_generate
         sed -i 's/OpenWrt/HP GEN8/g' package/base-files/files/bin/config_generate
         sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+        ./scripts/feeds clean
         ./scripts/feeds update -a
         ./scripts/feeds install -a
                     
