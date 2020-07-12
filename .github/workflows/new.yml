@@ -78,7 +78,7 @@ jobs:
     - name: Install Luci for Clash
       working-directory: ./openwrt
       run: |
-        git clone https://github.com/frainzy1477/luci-app-clash
+        git clone https://github.com/frainzy1477/luci-app-clash openwrt/package
          
     - name: Generate configuration file
       working-directory: ./openwrt
