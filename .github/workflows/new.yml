@@ -85,9 +85,9 @@ jobs:
       working-directory: ./openwrt
       run: |
         git clone https://github.com/dingyasheng/lean-compile.git openwrt/update
-        cd openwrt
-        chmod +x update/actiongen8.sh
-        sh -x update/actiongen8.sh
+#        cd openwrt
+#        chmod +x update/actiongen8.sh
+#        sh -x update/actiongen8.sh
          
     - name: Generate configuration file
       run: make defconfig
