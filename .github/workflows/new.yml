@@ -80,7 +80,7 @@ jobs:
       run: |
         git clone https://github.com/frainzy1477/luci-app-clash openwrt/package
         
-   - name: Copy actiongen8 file Luci
+    - name: Copy actiongen8 file Luci
       working-directory: ./openwrt
       run: |
         git clone https://github.com/dingyasheng/lean-compile.git openwrt/update
