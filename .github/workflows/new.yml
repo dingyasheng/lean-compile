@@ -12,9 +12,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 01 * * *
@@ -85,10 +85,9 @@ jobs:
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x $GEN8_SH
         cd openwrt
-        cp ../actiongen8.sh actiongen8.sh
-        chmod +x actiongen8.sh
-        sh -x actiongen8.sh
+        $GITHUB_WORKSPACE/$GEN8_SH
         make defconfig
 
     - name: Download package
