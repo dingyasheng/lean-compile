@@ -83,12 +83,9 @@ jobs:
     - name: Generate configuration file
       working-directory: ./openwrt
       run: |
-        [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $GEN8_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$GEN8_SH
-        make defconfig
+        chmod +x ./actiongen8.sh && ./actiongen8.sh
+        cd openwrt && make defconfig
 
     - name: Download package
       id: package
