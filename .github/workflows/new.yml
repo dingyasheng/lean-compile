@@ -79,13 +79,19 @@ jobs:
       working-directory: ./openwrt
       run: |
         git clone https://github.com/frainzy1477/luci-app-clash openwrt/package
+        
+   - name: Copy actiongen8 file Luci
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/dingyasheng/lean-compile.git openwrt/update
          
     - name: Generate configuration file
       working-directory: ./openwrt
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x ./actiongen8.sh && ./actiongen8.sh
-        cd openwrt && make defconfig
+        cd openwrt
+        chmod +x update/actiongen8.sh && update/actiongen8.sh
+        make defconfig
 
     - name: Download package
       id: package
