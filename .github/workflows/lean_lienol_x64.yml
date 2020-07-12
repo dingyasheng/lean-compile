@@ -90,8 +90,8 @@ jobs:
         
          
     - name: Generate configuration file
-      working-directory: ./openwrt
-      run:make defconfig
+      run: make defconfig
+
 
     - name: Download package
       id: package
